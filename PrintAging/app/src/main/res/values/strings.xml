@@ -1,0 +1,36 @@
+<resources>
+
+    <string name="app_name">PrintTest</string>
+    <string name="app_title">打印老化测试</string>
+    <string name="voltage">电池电压：</string>
+    <string name="voltage1">4188 mV</string>
+    <string name="inputBattery">电池电流：</string>
+    <string name="inputBattery1">198.3 mA</string>
+    <string name="temperatureputBattery">电池温度：</string>
+    <string name="temperatureputBattery1">30.0 ℃</string>
+    <string name="coreTemperatureput">机芯温度：</string>
+    <string name="coreTemperatureput1">32.0 ℃</string>
+    <string name="temperatureputQuery">温度查询</string>
+    <string name="prinitDensity">文字的打印浓度:</string>
+    <string name="density1">轻</string>
+    <string name="density2">正常</string>
+    <string name="density3">重</string>
+    <string name="printBlank">空走纸行数</string>
+    <string name="printBlankTest">走纸测试</string>
+    <string name="inputPrintData">请输入打印内容：</string>
+    <string name="print">"打印"</string>
+    <string name="printNum">"打印张数（张）"</string>
+    <string name="defaultNum">" 3 "</string>
+    <string name="defaultTime">" 0 "</string>
+    <string name="printDate">"打印时间间隔（秒）"</string>
+    <string name="printBlack">"打印纯黑"</string>
+    <string name="printText">"打印文字"</string>
+    <string name="printMap">"打印图片"</string>
+    <string name="printStop">"停止打印"</string>
+    <string name="cycleIng">"正在循环打印"</string>
+    <string name="cycleEnd">"已停止循环打印"</string>
+    <string name="printCycle">"循环打印"</string>
+    <string name="on">"开"</string>
+    <string name="off">"关"</string>
+
+</resources>
