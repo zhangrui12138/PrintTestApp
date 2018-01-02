@@ -607,28 +607,43 @@ public class MainActivity extends Activity  implements View.OnClickListener{
         }
     }
 
-
+    int mCount=0;
     public void printBlank() {
         int blankNum = stringToInt(mEtPrintBlank.getText().toString());
+        List<PrintItemObj> Blanks;
         if(blankNum>0 && blankNum<960) {
-            int i = 0;
             try {
                 if (printerDev != null) {
-                    while (i < blankNum) {
-                        printerDev.printText(new PrintBlankList(), new AidlPrinterListener.Stub() {
+//                    while (i < blankNum) {
+                    if(blankNum-80*mCount>80){
+                        Log.d("zhangrui","count=80/////"+mCount+"////80");
+                            Blanks=new PrintBlankList(80);
+                    }else if(blankNum-80*mCount > 0 && blankNum-80*mCount<80){
+                        Log.d("zhangrui","count=0-80/////"+mCount+"////"+(blankNum-80*mCount));
+                        Blanks=new PrintBlankList(blankNum-80*mCount);
+                    }else {
+                        Log.d("zhangrui","count<0/////"+mCount);
+                        mCount=0;
+                        return;
+                    }
+                        printerDev.printText(Blanks, new AidlPrinterListener.Stub() {
 
                             @Override
                             public void onPrintFinish() throws RemoteException {
-                                Toast.makeText(MainActivity.this, "打印完成", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(MainActivity.this, "打印完成", Toast.LENGTH_SHORT).show();
+                                Log.d("zhangrui","success");
+                                mCount++;
+                                printBlank();
                             }
 
                             @Override
                             public void onError(int arg0) throws RemoteException {
-                                Toast.makeText(MainActivity.this, "打印出错，错误码为： + arg0", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(MainActivity.this, "打印出错，错误码为： + arg0", Toast.LENGTH_SHORT).show();
+                                Log.d("zhangrui","打印出错，错误码为："+arg0);
                             }
                         });
-                        i++;
-                    }
+//                        i++;
+//                    }
                 } else {
                     Toast.makeText(MainActivity.this, "printerDev == null", Toast.LENGTH_SHORT).show();
                 }
@@ -727,8 +742,14 @@ public class MainActivity extends Activity  implements View.OnClickListener{
     }
 
     class PrintBlankList extends ArrayList<PrintItemObj> {
-        PrintBlankList() {
-            add(new PrintItemObj("\n"));
+        int consumeCount=0;
+        PrintBlankList(int Count) {
+            Log.d("zhangrui","PrintBlankListCount="+Count);
+            clear();
+            while (consumeCount<Count) {
+                add(new PrintItemObj("\n"));
+                consumeCount++;
+            }
         }
     }
 
